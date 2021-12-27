@@ -4,6 +4,7 @@ import Items from "./Items/Items";
 import { SearchBox } from "./SearchBox/SearchBox";
 import "./App.css";
 import { Fragment } from "react/cjs/react.production.min";
+import SaveItem from "./save/saveItem";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -25,7 +26,9 @@ function App() {
         data.category.toLowerCase().includes(searchValue?.toLowerCase())
       );
       console.log("filteredDataList");
-      filteredDataList.length>0 ? setItems(filteredDataList) : setItems(datalist);
+      filteredDataList.length > 0
+        ? setItems(filteredDataList)
+        : setItems(datalist);
     };
 
     fetchItems(
@@ -39,12 +42,20 @@ function App() {
   const onSearchChange = (event) => {
     setSearchValue(event.target.value);
   };
-
+  const updateHandler = (name, category,id) => {
+    console.log("value", category, name, id);
+  };
   return (
     <Fragment>
       <h1>Product Items</h1>
+      <SaveItem />
       <SearchBox onSearchChange={onSearchChange} />
-      <Items productItems={items} loading={isLoading} error={error}></Items>
+      <Items
+        productItems={items}
+        loading={isLoading}
+        error={error}
+        updateHandler={updateHandler}
+      ></Items>
     </Fragment>
   );
 }

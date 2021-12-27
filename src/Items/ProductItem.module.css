@@ -8,3 +8,4 @@
 .item:last-of-type {
   border-bottom: none;
 }
+li:hover ul li:hover { background: yellow; }

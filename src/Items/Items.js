@@ -9,7 +9,7 @@ const Items = (props) => {
     dataList = (
       <ul>
         {props.productItems.map((item) => (
-          <ProductItem key={item.id} name={item.name} category = {item.category}></ProductItem>
+          <ProductItem key={item.id} id={item.id} name={item.name} category = {item.category} {...props}></ProductItem>
         ))}
       </ul>
     );
